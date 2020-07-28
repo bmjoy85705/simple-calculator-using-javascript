@@ -4,8 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>simple calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+     <div class="container">
+          <table class="table table-dark table-borderless">
+              <thead>
+               <tr> 
+                   <th colspan="4">
+                        <input id="value" class="form-control" type="text">
+                    </th>
+               </tr>
+              </thead>
+             <tbody>
+                <tr>
+                    <td><button id="btn1" class="btn btn-success">1</button></td>
+                    <td><button id="btn2" class="btn btn-success">2</button></td>
+                    <td><button id="btn3" class="btn btn-success">3</button></td>
+                    <td><button id="btn-plus" class="btn btn-success">+</button></td>
+                </tr>
+                <tr>
+                    <td><button id="btn4" class="btn btn-success">4</button></td>
+                    <td><button id="btn5" class="btn btn-success">5</button></td>
+                    <td><button id="btn6" class="btn btn-success">6</button></td>
+                    <td><button id="btn-minus" class="btn btn-success">-</button></td>
+                </tr>
+                <tr>
+                    <td><button id="btn7" class="btn btn-success">7</button></td>
+                    <td><button id="btn8" class="btn btn-success">8</button></td>
+                    <td><button id="btn9" class="btn btn-success">9</button></td>
+                    <td><button id="btn-multiply" class="btn btn-success">x</button></td>
+                </tr>
+                <tr>
+                    <td><button id="btn0" class="btn btn-success">0</button></td>
+                    <td><button id="btn-clear" class="btn btn-success">C</button></td>
+                    <td><button id="equalBtn" class="btn btn-success">=</button></td>
+                    <td><button id="btn-division" class="btn btn-success">/</button></td>
+                </tr>
+                
+             </tbody>
+          </table>
+    </div>
+    <script>
+        function btncontrol(id){
+            
+            document.getElementById(id).addEventListener("click",function(){
+            var inputValue = document.getElementById("value").value;
+            var btnValue =document.getElementById(id).innerText;
+            btnValue = inputValue +btnValue;
+           
+            document.getElementById("value").value = btnValue;
+        })
+
+        }
+
+        btncontrol("btn1");
+        btncontrol("btn2");
+        btncontrol("btn3");
+        btncontrol("btn4");
+        btncontrol("btn5");
+        btncontrol("btn6");
+        btncontrol("btn7");
+        btncontrol("btn8");
+        btncontrol("btn9");
+        btncontrol("btn0");
+        btncontrol("btn-plus");
+        btncontrol("btn-minus");
+        btncontrol("btn-multiply");
+        btncontrol("btn-division");
+
+
+    document.getElementById("btn-clear").addEventListener("click",function(){
+        var inputValue = document.getElementById("value").value;
+        console.log(inputValue.length);
+        document.getElementById("value").value = "";
+    })
+
+    document.getElementById("equalBtn").addEventListener("click",function(){
+        var inputValue = document.getElementById("value").value;
+        // var result = inputValue.split(/[+-]+/);
+         for(let k in inputValue){
+            if(inputValue[k]=="+"){
+               var result = inputValue.split("+");
+               var total = parseInt(result[0])+parseInt(result[1]);
+               document.getElementById("value").value = total;
+              
+            }
+            if(inputValue[k]=="-"){
+               var result = inputValue.split("-");
+               var total = parseInt(result[0])-parseInt(result[1]);
+               document.getElementById("value").value = total;
+              
+            }
+            if(inputValue[k]=="x"){
+               var result = inputValue.split("x");
+               var total = parseInt(result[0])*parseInt(result[1]);
+               document.getElementById("value").value = total;
+              
+            }
+            if(inputValue[k]=="/"){
+               var result = inputValue.split("/");
+               var total = parseInt(result[0])/parseInt(result[1]);
+               document.getElementById("value").value = total;
+               
+            }
+         }
+        
+    })
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>
